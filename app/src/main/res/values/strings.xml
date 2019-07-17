@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HexaHash</string>
+    <string name="asset_name_text">Enter Asset name</string>
+    <string name="add_asset_text">Scan QR/Bar code</string>
+</resources>
