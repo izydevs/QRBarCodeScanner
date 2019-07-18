@@ -9,6 +9,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(), "Scan QR/Bar code", Toast.LENGTH_SHORT).show();
         } else {
             assert barCodeTV != null;
-            Asset asset = new Asset("Mobile", barCodeTV.getText().toString());
+            Asset asset = new Asset(assesName.getText().toString(), barCodeTV.getText().toString());
             model.insertData(asset);
             isAssetAdded = true;
         }
@@ -133,5 +136,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             requestPermission();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_search:
+                startSearchActivity();
+                break;
+        }
+        return true;
+    }
+
+    private void startSearchActivity() {
+        startActivity(new Intent(MainActivity.this,SearchAssetActivity.class));
     }
 }

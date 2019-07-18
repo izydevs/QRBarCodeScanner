@@ -3,6 +3,7 @@
     package="com.amit.hexahash">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"

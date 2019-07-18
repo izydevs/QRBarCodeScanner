@@ -15,6 +15,9 @@ public interface AssetDao {
     @Query("SELECT * FROM asset")
     LiveData<List<Asset>> getAssetDetails();
 
+    @Query("SELECT * FROM asset WHERE barcode IN (:barCodes)")
+    LiveData<List<Asset>> getAssetDetail(List<String> barCodes);
+
     @Insert
     void insertAsset(Asset asset);
 
